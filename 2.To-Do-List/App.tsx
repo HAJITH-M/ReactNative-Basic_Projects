@@ -1,4 +1,3 @@
-import { View, Text } from 'react-native'
 import React from 'react'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,7 +8,7 @@ import ToDoComponent from './src/ToDoComponent/ToDoComponent';
 // Define the type of the navigation stack
 export type RootStackParamList = {
   welcomepage: undefined;
-  ToDoComponent: undefined;
+  ToDoComponent: undefined; 
 };
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -18,10 +17,10 @@ const App:React.FC = () => {
 
     <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
-      <Stack.Navigator initialRouteName="welcomepage" screenOptions={{ headerShown: false }} >
-       
-          <Stack.Screen name="welcomepage" component={WelcomePage} options={{ headerShown: false }} />
-          <Stack.Screen name="ToDoComponent" component={ToDoComponent} />
+        <Stack.Navigator initialRouteName="welcomepage" screenOptions={{ headerShown: false }} >
+        
+            <Stack.Screen name="welcomepage" component={WelcomePage} options={{ headerShown: false }} />
+            <Stack.Screen name="ToDoComponent" component={ToDoComponent} />
 
         </Stack.Navigator>
       </NavigationContainer>

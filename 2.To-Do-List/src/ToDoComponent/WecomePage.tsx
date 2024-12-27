@@ -10,7 +10,7 @@ import { RootStackParamList } from '../../App'
 function WelcomePage() {
 
     type WelcomeNavigationProp = StackNavigationProp<RootStackParamList, 'welcomepage'>
-
+ 
    const navigation = useNavigation<WelcomeNavigationProp>();
 
    const handleNextPage = () => {
