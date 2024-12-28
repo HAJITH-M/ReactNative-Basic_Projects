@@ -44,7 +44,7 @@ const LoginHome = () => {
           </StyledView>
 
           <StyledView>
-            <StyledText className='text-center  font-semibold text-base shadow-lg text-gray-700 tracking-wider mt-8'>Create new account</StyledText>
+            <StyledText className='text-center  font-semibold text-base shadow-lg text-gray-700 tracking-wider mt-8' onPress={()=>navigation.navigate('signup')}>Create new account</StyledText>
           </StyledView>
 
           <StyledView className='mb-4'>

@@ -1,10 +1,11 @@
 import React from 'react'
-import { StyledAntDesign, StyledFontAwesome, StyledImage, StyledPressable, StyledText, StyledTextInput, StyledView } from '../../../Styled/StyledComponents'
+import { StyledAntDesign, StyledPressable, StyledText, StyledTextInput, StyledView } from '../../../Styled/StyledComponents'
 import { useNavigation } from '@react-navigation/native'
 import { SignupComponentProps } from './SignupComponentProps'
 
 const SignupComponent = () => {
     const navigation = useNavigation<SignupComponentProps>()
+
   return (
     <>
     <StyledView className='flex-1 items-center justify-center bg-white w-[98%] mx-auto'>
@@ -18,6 +19,13 @@ const SignupComponent = () => {
         </StyledView>
 
         <StyledView>
+
+          <StyledView>
+            <StyledTextInput 
+              className='w-80 h-12 border-2 border-gray-300 rounded-lg px-4 mt-8 focus:border-blue-500 active:border-blue-500'
+              placeholder='Name'
+            />
+          </StyledView>
 
           <StyledView>
             <StyledTextInput 
@@ -50,7 +58,7 @@ const SignupComponent = () => {
           </StyledView>
 
           <StyledView>
-            <StyledText className='text-center  font-semibold text-base shadow-lg text-gray-700 tracking-wider mt-8'>Already have an account?</StyledText>
+            <StyledText className='text-center  font-semibold text-base shadow-lg text-gray-700 tracking-wider mt-8' onPress={()=>navigation.navigate('login')}>Already have an account?</StyledText>
           </StyledView>
 
           <StyledView className='mb-4'>
@@ -71,3 +79,6 @@ const SignupComponent = () => {
 }
 
 export default SignupComponent
+
+
+// https://meet.google.com/fct-vdff-qtg

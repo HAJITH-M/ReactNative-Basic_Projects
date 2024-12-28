@@ -16,7 +16,8 @@ export { StyledView, StyledText, StyledButton, StyledTextInput, StyledImage, Sty
 
 
 // icons
-
 const StyledAntDesign = styled(AntDesign);
 const StyledFontAwesome = styled(FontAwesome);
+
+// Export icons
 export { StyledAntDesign, StyledFontAwesome };
