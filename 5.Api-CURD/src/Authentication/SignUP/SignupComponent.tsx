@@ -75,7 +75,7 @@ const SignupComponent = () => {
             console.log(formFields)
 
             try{
-              const response = await axios.post('https://webscraper-ct6m.onrender.com/api/signup', {
+              const response = await axios.post('https://rntodoapi.vercel.app/register', {
                 username: form.username,
                 email: form.email,
                 password: form.password,
