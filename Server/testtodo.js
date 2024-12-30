@@ -136,6 +136,11 @@ app.get('/register', (req, res) => {
     res.json(users); // returns the list of users with hashed passwords
   });
 
+
+  app.get('/login', (req, res) => {
+    res.json(users); 
+  });
+
 module.exports = (req, res) => {
     app(req, res);
   };

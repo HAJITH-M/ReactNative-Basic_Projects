@@ -82,6 +82,8 @@ const SignupComponent = () => {
               });
               console.log('Response:', response.data);
 
+              navigation.navigate('login');
+
             }
             catch(error:any){
                 console.log('Error:', error);

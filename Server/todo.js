@@ -47,7 +47,7 @@ app.post('/login', async (req, res) => {
 
   res.json({ message: 'Login successful', token });
 });
-
+z
 const authenticateToken = (req, res, next) => {
   const token = req.headers['authorization']?.split(' ')[1];
 
