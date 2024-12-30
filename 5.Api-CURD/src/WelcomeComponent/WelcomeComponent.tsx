@@ -1,11 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { WelcomeNavigationProp } from './WecomeComponentProp'
 import { StyledImage, StyledPressable, StyledText, StyledView } from '../../Styled/StyledComponents'
+import * as jwt_decode from 'jwt-decode';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Text } from 'react-native';
 
 const WelcomeComponent = () => {
 
     const navigation = useNavigation<WelcomeNavigationProp>();
+
+    const handleNavigate = async () =>{
+        console.log(await AsyncStorage.getItem('token'));
+        navigation.navigate('login')
+    }
+
+    const tokenremove = async () =>{
+       const token = await AsyncStorage.removeItem('token');
+       console.log(token);
+    }
+
 
   return (
     <StyledView className='flex-1 items-center justify-center bg-white h-screen'>
@@ -23,12 +37,18 @@ const WelcomeComponent = () => {
         <StyledView className='flex items-center justify-center mt-12 mb-2 flex-row space-x-9'>
 
           <StyledPressable className='text-center px-12 shadow-lg shadow-blue-700 py-3 bg-blue-800 rounded-lg tracking-widest active:bg-blue-700 hover:bg-blue-700' 
-            onPress={() => navigation.navigate('login')}>
+            onPress={handleNavigate}>
             <StyledText className='text-white text-xl font-semibold'>Login</StyledText>
           </StyledPressable>
 
+
+          
+
           <StyledText className='text-center px-10 border-gray-300 border py-3 font-semibold tracking-widest text-xl rounded-lg' onPress={() => navigation.navigate('signup')}>Register</StyledText>
         </StyledView>
+
+
+<Text onPress={tokenremove}>remove</Text>
  
     </StyledView>
   )

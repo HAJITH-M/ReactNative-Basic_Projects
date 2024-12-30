@@ -1,5 +1,5 @@
 import { StackNavigationProp } from "@react-navigation/stack";
-import { RootStackParamList } from "../../../App";
+import { RootStackParamList } from "../../Navigation/RootNavigation";
 
 export type LoginComponentProps = StackNavigationProp<RootStackParamList, 'login'>
  

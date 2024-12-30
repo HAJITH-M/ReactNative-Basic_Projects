@@ -1,20 +1,23 @@
 import { useState } from "react"
 
+
+const [form, setForm] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+})
+
+const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: ''
+})
+
 const handleSignUp = () =>{
 
-    const [form, setForm] = useState({
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-    })
-
-    const [errors, setErrors] = useState({
-        name: '',
-        email: '',
-        password: '',
-        confirmPassword: ''
-    })
+    
 
     const nameRegex = /^[A-Za-z\s]+$/;
 
