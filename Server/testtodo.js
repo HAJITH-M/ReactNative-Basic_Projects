@@ -19,25 +19,25 @@ app.get('/', (req, res) => {
 });
 
 app.post('/register', async (req, res) => {
-  const { userEmail, password } = req.body;
+  const { email, password } = req.body;
 
-  const existingUser = users.find(user => user.userEmail === userEmail);
+  const existingUser = users.find(user => user.email === email);
   if (existingUser) {
     return res.status(400).json({ message: 'User already exists' });
   }
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
-  const newUser = { userEmail, password: hashedPassword };
+  const newUser = { email, password: hashedPassword };
   users.push(newUser);
 
   res.status(201).json({ message: 'User registered successfully' });
 });
 
 app.post('/login', async (req, res) => {
-  const { userEmail, password } = req.body;
+  const { email, password } = req.body;
 
-  const user = users.find(user => user.userEmail === userEmail);
+  const user = users.find(user => user.email === email);
   if (!user) {
     return res.status(400).json({ message: 'Invalid credentials' });
   }
@@ -47,7 +47,7 @@ app.post('/login', async (req, res) => {
     return res.status(400).json({ message: 'Invalid credentials' });
   }
 
-  const token = jwt.sign({ userEmail: user.userEmail }, JWT_SECRET, { expiresIn: '1h' });
+  const token = jwt.sign({ email: user.email }, JWT_SECRET, { expiresIn: '1h' });
 
   res.json({ message: 'Login successful', token });
 });
@@ -79,7 +79,7 @@ app.post('/todos', authenticateToken, (req, res) => {
     id: todos.length + 1,
     title,
     description: description || '',
-    user: req.user.userEmail,
+    user: req.user.email,
     completed: false
   };
 
@@ -88,13 +88,13 @@ app.post('/todos', authenticateToken, (req, res) => {
 });
 
 app.get('/todos', authenticateToken, (req, res) => {
-  const userTodos = todos.filter(todo => todo.user === req.user.userEmail);
+  const userTodos = todos.filter(todo => todo.user === req.user.email);
   res.json(userTodos);
 });
 
 app.get('/todos/:id', authenticateToken, (req, res) => {
   const { id } = req.params;
-  const todo = todos.find(t => t.id == id && t.user === req.user.userEmail);
+  const todo = todos.find(t => t.id == id && t.user === req.user.email);
 
   if (!todo) {
     return res.status(404).json({ message: 'Todo not found' });
@@ -107,7 +107,7 @@ app.put('/todos/:id', authenticateToken, (req, res) => {
   const { id } = req.params;
   const { title, description, completed } = req.body;
 
-  const todo = todos.find(t => t.id == id && t.user === req.user.userEmail);
+  const todo = todos.find(t => t.id == id && t.user === req.user.email);
   if (!todo) {
     return res.status(404).json({ message: 'Todo not found' });
   }
@@ -122,7 +122,7 @@ app.put('/todos/:id', authenticateToken, (req, res) => {
 app.delete('/todos/:id', authenticateToken, (req, res) => {
   const { id } = req.params;
 
-  const index = todos.findIndex(t => t.id == id && t.user === req.user.userEmail);
+  const index = todos.findIndex(t => t.id == id && t.user === req.user.email);
   if (index === -1) {
     return res.status(404).json({ message: 'Todo not found' });
   }

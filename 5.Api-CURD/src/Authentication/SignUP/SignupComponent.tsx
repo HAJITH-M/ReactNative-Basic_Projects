@@ -76,7 +76,7 @@ const SignupComponent = () => {
 
             try{
               const response = await axios.post('https://rntodoapi.vercel.app/register', {
-                username: form.username,
+                // username: form.username,
                 email: form.email,
                 password: form.password,
               });
