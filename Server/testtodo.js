@@ -118,6 +118,9 @@ app.put('/todos/:id', authenticateToken, (req, res) => {
   todo.description = description || todo.description;
   todo.completed = completed !== undefined ? completed : todo.completed;
 
+  // Update the modifiedAt timestamp
+  todo.modifiedAt = new Date();  // Store the current timestamp for modification time
+
   res.json({ message: 'Todo updated successfully', todo });
 });
 
