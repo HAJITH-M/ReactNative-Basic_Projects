@@ -80,12 +80,14 @@ app.post('/todos', authenticateToken, (req, res) => {
     title,
     description: description || '',
     user: req.user.email,
-    completed: false
+    completed: false,
+    createdAt: new Date() // Store the current timestamp
   };
 
   todos.push(newTodo);
   res.status(201).json({ message: 'Todo created successfully', todo: newTodo });
 });
+
 
 app.get('/todos', authenticateToken, (req, res) => {
   const userTodos = todos.filter(todo => todo.user === req.user.email);
